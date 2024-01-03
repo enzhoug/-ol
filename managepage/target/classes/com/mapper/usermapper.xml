@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.usermapper">
+    <!--this-->
+  <!--  <select id="selectAll" resultType="User">
+        select * from tb_user;
+    </select>
+    <select id="selrctByid" resultType="User">
+        select * from tb_user where id=#{id};
+    </select>-->
+    <!--验证注册信息-->
+    <select id="selectByname" resultType="com.pojo.User">
+        select *from userol where username=#{username};
+    </select>
+    <!--将注册信息加入到数据库-->
+    <insert id="adduser" useGeneratedKeys="true" keyProperty="id">
+        insert into userol(username,password) values(#{username},#{password});
+    </insert>
+    <!--登录功能-->
+    <select id="selectBynamepassword" resultType="com.pojo.User">
+        select *from userol where username=#{username} and password=#{password};
+    </select>
+    <!--查看所有医生信息-->
+    <select id="selectdoctor" resultType="com.pojo.Doctor">
+        select *from doctor;
+    </select>
+
+    <!--  <select id="selectbrand" resultType="org.example.Brand">
+          select * from tb_brand where id= #{id};
+      </select>
+
+      <insert id="insertbrand"  parameterType="org.example.Brand">
+          insert into tb_brand (brandName, companyName, ordered, description, status) VALUES (#{brandName}, '小米', 50,'are you ok', 1);
+      </insert>-->
+
+</mapper>
